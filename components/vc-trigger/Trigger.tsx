@@ -215,7 +215,9 @@ export default defineComponent({
       ) {
         return;
       }
-      this.delaySetPopupVisible(false, this.$props.mouseLeaveDelay);
+      if (this.isMouseLeaveToHide()) {
+        this.delaySetPopupVisible(false, this.$props.mouseLeaveDelay);
+      }
       const { vcTriggerContext = {} } = this;
       if (vcTriggerContext.onPopupMouseleave) {
         vcTriggerContext.onPopupMouseleave(e);
@@ -412,11 +414,13 @@ export default defineComponent({
         stretch,
         alignPoint,
         mobile,
+        arrow,
         forceRender,
       } = this.$props;
       const { sPopupVisible, point } = this.$data;
       const popupProps = {
         prefixCls,
+        arrow,
         destroyPopupOnHide,
         visible: sPopupVisible,
         point: alignPoint ? point : null,

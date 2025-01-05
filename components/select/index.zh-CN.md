@@ -63,7 +63,7 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*5oPiTqPxGAUAAA
 | searchValue | 控制搜索文本 | string | - |  |
 | showArrow | 是否显示下拉小箭头 | boolean | 单选为 true,多选为 false |  |
 | showSearch | 配置是否可搜索 | boolean | 单选为 false,多选为 true |  |
-| size | 选择框大小，可选 `large` `small` | string | default |  |
+| size | 选择框大小，可选 `middle` `large` `small` | string | middle |  |
 | status | 设置校验状态 | 'error' \| 'warning' | - | 3.3.0 |
 | suffixIcon | 自定义的选择框后缀图标 | VNode \| slot | - |  |
 | tagRender | 自定义 tag 内容 render，仅在 `mode` 为 `multiple` 或 `tags` 时生效 | slot \| (props) => any | - | 3.0 |
@@ -111,13 +111,13 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*5oPiTqPxGAUAAA
 | 参数  | 说明 | 类型                      | 默认值 |
 | ----- | ---- | ------------------------- | ------ |
 | key   |      | string                    | -      |
-| label | 组名 | string\|function(h)\|slot | 无     |
+| label | 组名 | string\|function(h)\|slot | -      |
 
 ## FAQ
 
 ### 点击 `dropdownRender` 里的内容浮层关闭怎么办？
 
-自定义内容点击时会关闭浮层，如果不喜欢关闭，可以添加 `@mousedown.prevent` 进行阻止。 看下 [dropdownRender 例子](/components/select-cn/#components-select-demo-custom-dropdown) 里的说明。
+自定义内容点击时会关闭浮层，如果不喜欢关闭，可以通过取消点击事件的默认行为进行阻止。 看下 [dropdownRender 例子](#components-select-demo-custom-dropdown-menu) 里的说明。
 
 ### 为什么 `placeholder` 不显示 ？
 

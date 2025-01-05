@@ -116,7 +116,7 @@ Specify `dataSource` of Table as an array of data.
 
 | Events Name | Description | Arguments |  |
 | --- | --- | --- | --- |
-| change | Callback executed when pagination, filters or sorter is changed | Function(pagination, filters, sorter, { currentDataSource }) |  |
+| change | Callback executed when pagination, filters or sorter is changed | Function(pagination, filters, sorter, { action, currentDataSource }) |  |
 | expand | Callback executed when the row expand icon is clicked | Function(expanded, record) |  |
 | expandedRowsChange | Callback executed when the expanded rows change | Function(expandedRows) |  |
 | resizeColumn | Triggered when the column is dragged | Function(width, column) |  |
@@ -258,10 +258,19 @@ interface FilterDropdownProps {
   setSelectedKeys: (selectedKeys: Key[]) => void;
   selectedKeys: Key[];
   confirm: (param?: FilterConfirmProps) => void;
-  clearFilters?: () => void;
+  clearFilters?: (param?: FilterResetProps) => void;
   filters?: ColumnFilterItem[];
   visible: boolean;
   column: ColumnType;
+}
+
+interface FilterConfirmProps {
+  closeDropdown: boolean;
+}
+
+interface FilterResetProps {
+  confirm?: boolean;
+  closeDropdown?: boolean;
 }
 ```
 

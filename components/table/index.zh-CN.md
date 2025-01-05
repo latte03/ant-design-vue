@@ -121,7 +121,7 @@ coverDark: https://mdn.alipayobjects.com/huamei_7uahnr/afts/img/A*Sv8XQ50NB40AAA
 
 | 事件名称 | 说明 | 回调参数 |
 | --- | --- | --- |
-| change | 分页、排序、筛选变化时触发 | Function(pagination, filters, sorter, { currentDataSource }) |
+| change | 分页、排序、筛选变化时触发 | Function(pagination, filters, sorter, { action, currentDataSource }) |
 | expand | 点击展开图标时触发 | Function(expanded, record) |
 | expandedRowsChange | 展开的行变化时触发 | Function(expandedRows) |
 | resizeColumn | 拖动列时触发 | Function(width, column) |
@@ -263,10 +263,19 @@ interface FilterDropdownProps {
   setSelectedKeys: (selectedKeys: Key[]) => void;
   selectedKeys: Key[];
   confirm: (param?: FilterConfirmProps) => void;
-  clearFilters?: () => void;
+  clearFilters?: (param?: FilterResetProps) => void;
   filters?: ColumnFilterItem[];
   visible: boolean;
   column: ColumnType;
+}
+
+interface FilterConfirmProps {
+  closeDropdown: boolean;
+}
+
+interface FilterResetProps {
+  confirm?: boolean;
+  closeDropdown?: boolean;
 }
 ```
 

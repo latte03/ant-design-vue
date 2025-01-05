@@ -63,7 +63,7 @@ Select component to select value from options.
 | searchValue | The current input "search" text | string | - |  |
 | showArrow | Whether to show the drop-down arrow | boolean | single:true, multiple:false |  |
 | showSearch | Whether select is searchable | boolean | single:false, multiple:true |  |
-| size | Size of Select input. `default` `large` `small` | string | default |  |
+| size | Size of Select input. `middle` `large` `small` | string | middle |  |
 | status | Set validation status | 'error' \| 'warning' | - | 3.3.0 |
 | suffixIcon | The custom suffix icon | VNode \| slot | - |  |
 | tagRender | Customize tag render, only applies when `mode` is set to `multiple` or `tags` | slot \| (props) => any | - |  |
@@ -117,7 +117,7 @@ Select component to select value from options.
 
 ### The dropdown is closed when click `dropdownRender` area?
 
-Dropdown menu will be closed if click `dropdownRender` area, you can prevent it by wrapping `@mousedown.prevent` See the [dropdownRender example](/components/select/#components-select-demo-custom-dropdown).
+Dropdown menu will be closed if click `dropdownRender` area, you can prevent the default behavior of a click event, See the [dropdownRender example](#components-select-demo-custom-dropdown-menu).
 
 ### Why is `placeholder` not displayed?
 

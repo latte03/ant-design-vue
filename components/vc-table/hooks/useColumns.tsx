@@ -1,6 +1,6 @@
 import { warning } from '../../vc-util/warning';
 import type { ComputedRef, Ref } from 'vue';
-import { renderSlot, computed, watchEffect } from 'vue';
+import { computed, watchEffect } from 'vue';
 import type {
   ColumnsType,
   ColumnType,
@@ -14,6 +14,7 @@ import type {
 import { INTERNAL_COL_DEFINE } from '../utils/legacyUtil';
 import { EXPAND_COLUMN } from '../constant';
 import { useInjectSlots } from '../../table/context';
+import { customRenderSlot } from '../../_util/vnode';
 
 function flatColumns<RecordType>(columns: ColumnsType<RecordType>): ColumnType<RecordType>[] {
   return columns.reduce((list, column) => {
@@ -107,7 +108,7 @@ function useColumns<RecordType>(
     prefixCls?: Ref<string>;
     columns?: Ref<ColumnsType<RecordType>>;
     expandable: Ref<boolean>;
-    expandedKeys: Ref<Set<Key>>;
+    expandedKeys: ComputedRef<Set<Key>>;
     getRowKey: Ref<GetRowKey<RecordType>>;
     onTriggerExpand: TriggerEventHandler<RecordType>;
     expandIcon?: Ref<RenderExpandIcon<RecordType>>;
@@ -179,7 +180,7 @@ function useColumns<RecordType>(
           class: `${prefixCls.value}-expand-icon-col`,
           columnType: 'EXPAND_COLUMN',
         },
-        title: renderSlot(contextSlots.value, 'expandColumnTitle', {}, () => ['']),
+        title: customRenderSlot(contextSlots.value, 'expandColumnTitle', {}, () => ['']),
         fixed: fixedColumn,
         class: `${prefixCls.value}-row-expand-icon-cell`,
         width: expandColumnWidth.value,
